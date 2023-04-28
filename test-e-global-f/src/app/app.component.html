@@ -30,7 +30,7 @@
     </div>
 
     <button type="submit" name="button" class="btn btn-primary btn-block " [disabled]="btnloader" [ngClass]="{ 'no-drop': btnloader }">
-        <i class="fas fa-spinner fa-spin mr-3" *ngIf="btnloader"></i> Inicia Sesión
+        <i class="fas fa-spinner fa-spin mr-3" *ngIf="btnloader"></i> Calcular
     </button>
   </form>
 </div>
@@ -38,6 +38,23 @@
 
 <div class="table">
 
+ 
 
+<table class="table">
+  <thead>
+    <tr >
+      <th scope="col">#</th>
+      <th scope="col">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of list">
+      <th scope="row">{{e.id}}</th>
+      <td>{{e.resultado}}</td>
+   
+    </tr>
+ 
+  </tbody>
+</table>
 
 </div>

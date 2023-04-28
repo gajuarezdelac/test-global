@@ -35,15 +35,9 @@ public class TestserviceImpl implements ITestService{
 		
 		for(TestEntity e : list) {
 			
-			TestReponse p = new TestReponse();
-			System.out.println(e.getResultado() + " Valor");
-			
+			TestReponse p = new TestReponse();			
 			p.setId(e.getId());
 			p.setResultado(EncryptDecryptUtil.decrypt(e.getResultado()));
-			
-			System.out.println(e.getResultado() + " Valor");
-			System.out.println(p.getResultado() + " Valor");
-
 			newList.add(p);
 		}
 		
@@ -61,9 +55,6 @@ public class TestserviceImpl implements ITestService{
 		  case "SUMA":
 			  resultado = request.getNum1() + request.getNum2();
 			  entity.setResultado(EncryptDecryptUtil.encrypt(String.valueOf(resultado)));
-
-				System.out.println(entity.getResultado());
-
 		    break;
 		  case "RESTA":
 			  resultado = request.getNum1() - request.getNum2();
@@ -73,17 +64,13 @@ public class TestserviceImpl implements ITestService{
 		    break;
 		  case "DIVISION":
 			   resultado = request.getNum1() / request.getNum2();
-			  entity.setResultado(EncryptDecryptUtil.encrypt(String.valueOf(resultado)));
-			   System.out.println(entity.getResultado());
+   			  entity.setResultado(EncryptDecryptUtil.encrypt(String.valueOf(resultado)));
 
 			    break;
 			    
 		  case "MULTIPLICACION":
 			  resultado = request.getNum1() * request.getNum2();
 			  entity.setResultado(EncryptDecryptUtil.encrypt(String.valueOf(resultado)));
-			  System.out.println(entity.getResultado());
-				
-
 			    break;
 		  default:
 			  throw new Exception("Haz elegido una opción incorrecta");

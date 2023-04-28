@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -19,9 +21,9 @@ public class TestEntity {
 	@Column(nullable = false, updatable = false)
 	private Integer id;
 	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String contenido;
-	
-//    @Convert(converter = AttributeEncryptor.class)
+
 	private String resultado;
 
 }

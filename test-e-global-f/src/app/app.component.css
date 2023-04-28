@@ -7,3 +7,10 @@
 .form-group {
   margin: 10px 10px;
 }
+
+table {
+  
+  width: 400px;
+  margin: 100px auto;
+  border: 1px solid #828282;
+}

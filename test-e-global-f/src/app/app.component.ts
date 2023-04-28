@@ -19,6 +19,8 @@ export class AppComponent  implements OnInit {
   public btnloader: boolean = false;  
   public showLoading : boolean  = false;
   public subcriptions : Subscription[] = [];
+
+  public list : any;
   
 
 
@@ -30,6 +32,8 @@ export class AppComponent  implements OnInit {
       num2: ['', [Validators.required]],
       operation: ['', [Validators.required]],
     });
+
+    this.getResults();
   }
 
   get f() { return this.form.controls; }
@@ -44,14 +48,31 @@ export class AppComponent  implements OnInit {
     this.btnloader = true;
     let form = this.form.value;
 
-    alert("Casi")
 
     this.subcriptions.push(
       this.service.newOperation(form).subscribe(
         (response: any) => {
+          this.getResults();
 
           alert("Operación realiza correctamente")
-         
+        },
+        (errorResponse: HttpErrorResponse) => {
+          this.showLoading = false;
+          this.btnloader = false;
+        }
+      )
+    );
+  }
+
+
+  getResults(): void {
+    
+    this.subcriptions.push(
+      this.service.getResults().subscribe(
+        (response: any) => {
+          
+          this.list = response;
+          
         },
         (errorResponse: HttpErrorResponse) => {
           this.showLoading = false;
